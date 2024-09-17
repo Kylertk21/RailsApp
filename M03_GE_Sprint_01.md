@@ -1,9 +1,14 @@
+ruby on rails documentation: https://guides.rubyonrails.org/v7.1/
+
 ## USS 1: As a student, I want to create a profile with basic information, So I can manage my personal details in the system
 
  System should allow the creation of a student with: **first name**, **last name**, **email**, **grad date** *all fields required*
 
  If required field is missing student should see: **error message** and **record should not be saved**
 
+`rails generate scaffold <name> <fieldname>:<datatype>`
+
+recommend: `rails generate scaffold Student first_name:string last_name:string email:string grad_date:date`
 ___
 
 ## USS 2: AS the MSU CS Admin, I want to ensure students enter school email that is unique and in the correct format, so that no two students can use the same email address
