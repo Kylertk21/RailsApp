@@ -8,7 +8,7 @@ ruby on rails documentation: https://guides.rubyonrails.org/v7.1/
 
 `rails generate scaffold <name> <fieldname>:<datatype>`
 
-recommend: `rails generate scaffold Student first_name:string last_name:string email:string grad_date:date`
+recommend: `rails generate scaffold Student first_name:string last_name:string school_email:string grad_date:date`
 ___
 
 ## USS 2: AS the MSU CS Admin, I want to ensure students enter school email that is unique and in the correct format, so that no two students can use the same email address
