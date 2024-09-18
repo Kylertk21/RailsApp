@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_12_075214) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_18_181454) do
   create_table "students", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.string "school_email"
-    t.string "major"
-    t.string "minor"
-    t.date "graduation_date"
+    t.string "grad_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["school_email"], name: "index_Students_on_school_email", unique: true
   end
 
 end
