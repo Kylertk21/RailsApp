@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: test
+  last_name: test
+  school_email: Test@msudenver.edu
+  grad_date: 2024-10-10
+  major: test
+
+two:
+  first_name: Test2 
+  last_name: Test2
+  school_email: Test2@msudenver.edu
+  grad_date: 2024-10-10
+  major: test
