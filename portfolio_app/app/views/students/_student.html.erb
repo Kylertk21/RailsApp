@@ -1,4 +1,12 @@
 <div id="<%= dom_id student %>">
+  <strong>Profile Picture:</strong>
+    <p>
+    <% if student.image.attached? %>
+      <%= link_to image_tag(student.image), student.image %>
+    <% else %>
+      <%= image_tag('default_profile.png', alt: "Default Profile Picture") %>
+    <% end %>
+  </p>
   <p>
     <strong>First name:</strong>
     <%= student.first_name %>

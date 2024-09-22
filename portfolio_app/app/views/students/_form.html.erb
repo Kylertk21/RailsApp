@@ -10,8 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
+    <div>
     <%= form.label :first_name, style: "display: block" %>
     <%= form.text_field :first_name %>
   </div>
@@ -36,6 +35,10 @@
     <%= form.text_field :major %>
   </div>
 
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
 
   <div>
     <%= form.submit %>
