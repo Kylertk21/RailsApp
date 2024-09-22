@@ -1,0 +1,3 @@
+rails db:test:prepare 
+rails db:fixtures:load RAILS_ENV=test
+rails test test/models/student_test.rb:x -v 
