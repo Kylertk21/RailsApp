@@ -27,7 +27,7 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 # Copy the rest of the application code
-COPY . /workspace
+COPY portfolio_app /workspace
 
 
 # Default command to start an interactive shell

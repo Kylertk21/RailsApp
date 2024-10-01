@@ -1,0 +1,8 @@
+rails db:truncate_all --remove all data w/o deleting schema 
+rails db:drop --drop database entirely, destroys all data. schema remains w/ scaffold
+rails db:create --create database w/ tables from scaffold schema
+rails db:migrate --apply new tables
+rails db:rollback --revert to old schema STEP=3 --to rollback 3 migrations
+rails destroy scaffold <name>
+rails generate scaffold <name> [param]:[datastruct]
+rails assets:precompile -- compiles assets
