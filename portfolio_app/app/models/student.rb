@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  scope :by_major, ->(major) { where(major: major) if major.present? }
   validates:first_name, presence:true, length: {maximum: 100}
   validates:last_name, presence:true, length: {maximum: 100}
   validates:grad_date, presence:true, length: {maximum: 100}

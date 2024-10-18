@@ -2,15 +2,27 @@
 
 <h1>Students</h1>
 
-<div id="students">
-  <% @students.each do |student| %>
-    <%= render student %>
-    <p>
-    <%= link_to "Show this student", student %>
-    </p>
-  <% end %>
+<%= render'search_form', search_params: @search_params %>
+
+<%= link_to "Show All", students_path(show_all: true), method: :get, class: "show-all" %>
+
+<% if @students.present? %>
+  <div id="students">
+    <% @students.each do |student| %>
+      <%= render student %>
+      <p>
+      <%= link_to "Show this student", student %>
+      </p>
+    <% end %>    
 </div>
 
-<%= link_to "New student", new_student_path %>
+<!-- pagination -->
+  <div class="pagination">
+    <%= paginate @students %>
+  </div>
 
-<%= render'search_form', search_params: @search_params %>
+<% else %>
+  <p>No students found</p>
+<% end %>
+
+<%= link_to "New student", new_student_path %>
