@@ -12,5 +12,11 @@ VALID_MAJORS = ["Computer Engineering BS", "Computer Information Systems BS",
     with: /\A[\w+\-.]+@msudenver\.edu\z/i,
     message: "must be a valid MSU Denver email address"
   }
+
+  before_save :format_grad_date
+
+  def format_grad_date
+    self.grad_date = grad_date.strftime("%Y-%m-%d") if grad_date.present?
+  end
 end
 

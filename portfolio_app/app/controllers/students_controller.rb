@@ -5,13 +5,26 @@ class StudentsController < ApplicationController
   def index
     Rails.logger.info"Params: #{params.inspect}"
     @search_params = params[:search]||{}
+
+    @students = Student.none
+
     if params[:show_all] == 'true'
-      @students = Student.page(params[:page]).per(10)
-    elsif @search_params[:major].present?
-      @students = Student.by_major(@search_params[:major]).page(params[:page]).per(10)
-    else 
-      @students = Student.none 
-    end      
+      @students = Student.page(params[:page]).per(4)
+    end
+ 
+    if @search_params[:major].present? && @search_params[:grad_date].present? && @search_params[:before_after].present?
+      grad_date = @search_params[:grad_date]
+      
+      @students = Student.by_major(@search_params[:major])
+
+      if @search_params[:before_after] == 'before'
+        @students = @students.where('grad_date < ?', grad_date)
+      elsif @search_params[:before_after] == 'after'
+        @students = @students.where('grad_date > ?', grad_date)
+      end
+    end
+
+    @students = @students.page(params[:page]).per(4)
 
     Rails.logger.info "Search Params: #{@search_params.inspect}"
     Rails.logger.info "Filtered Students: #{@students.inspect}"
