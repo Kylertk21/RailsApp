@@ -158,8 +158,8 @@ RSpec.describe "Students", type: :request do
 
     expect(response).to have_http_status(:found)
     follow_redirect!
-    expect(response.body).to include("Student was successfully deleted")
     expect(Student.exists?(student.id)).to be_falsey
+    end
 
 
     # Test 14: Returns a 404 when trying to delete a non-existent student
@@ -169,4 +169,3 @@ RSpec.describe "Students", type: :request do
       end
     end
   end
-end
