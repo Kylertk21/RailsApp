@@ -8,14 +8,16 @@ class StudentsController < ApplicationController
 
     @students = Student.none
 
-    if params[:show_all] == 'true'
-      @students = Student.page(params[:page]).per(4)
+    if @search_params[:major].present? || (@search_params[:grad_date].present? && @search_params[:before_after].present?)
+      @students = Student.all
     end
  
-    if @search_params[:major].present? && @search_params[:grad_date].present? && @search_params[:before_after].present?
-      grad_date = @search_params[:grad_date]
-      
+    if @search_params[:major].present?  
       @students = Student.by_major(@search_params[:major])
+    end
+
+    if @search_params[:grad_date].present? && @search_params[:before_after].present?      
+      grad_date = @search_params[:grad_date]
 
       if @search_params[:before_after] == 'before'
         @students = @students.where('grad_date < ?', grad_date)
@@ -23,8 +25,12 @@ class StudentsController < ApplicationController
         @students = @students.where('grad_date > ?', grad_date)
       end
     end
-
-    @students = @students.page(params[:page]).per(4)
+    
+    if params[:show_all] == 'true'
+      @students = Student.page(params[:page]).per(4)
+    else
+      @students = @students.page(params[:page]).per(4) unless @students.empty?
+    end
 
     Rails.logger.info "Search Params: #{@search_params.inspect}"
     Rails.logger.info "Filtered Students: #{@students.inspect}"
@@ -76,7 +82,7 @@ class StudentsController < ApplicationController
     @student.destroy!
 
     respond_to do |format|
-      format.html { redirect_to students_url, notice: "Student was successfully destroyed." }
+      format.html { redirect_to students_url, notice: "Student was successfully deleted." }
       format.json { head :no_content }
     end
   end
