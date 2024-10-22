@@ -7,7 +7,13 @@ class Student < ApplicationRecord
   validates:first_name, presence:true, length: {maximum: 100}
   validates:last_name, presence:true, length: {maximum: 100}
   validates:grad_date, presence:true, length: {maximum: 100}
-  
+  validate:email_format
+  def email_format
+    unless email=~ /\A[\w+\-.]+@msudenver\.edu\z/i
+      errors.add(:email, "must be an @msudenver.edu email address")
+    end
+  end
+
 VALID_MAJORS = ["Computer Engineering BS", "Computer Information Systems BS",
                   "Computer Science BS", "Cybersecurity Major", "Data Science and Machine Learning Major"]
   validates:major, presence:true, length: {maximum: 255}, inclusion: { in: VALID_MAJORS, message: "%{value} is not a valid major"}

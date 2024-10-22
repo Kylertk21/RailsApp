@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: %i[ show edit update destroy ]
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # GET /students or /students.json
   def index

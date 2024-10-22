@@ -6,3 +6,4 @@ rails db:rollback --revert to old schema STEP=3 --to rollback 3 migrations
 rails destroy scaffold <name>
 rails generate scaffold <name> [param]:[datastruct]
 rails assets:precompile -- compiles assets
+http://0.0.0.0:3000/rails/info/routes for routes info

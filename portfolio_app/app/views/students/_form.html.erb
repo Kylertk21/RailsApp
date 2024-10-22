@@ -11,32 +11,32 @@
     </div>
   <% end %>
     <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+    <%= f.label :first_name, style: "display: block" %>
+    <%= f.text_field :first_name %>
   </div>
 
   <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+    <%= f.label :last_name, style: "display: block" %>
+    <%= f.text_field :last_name %>
   </div>
 
   <div>
-    <%= form.label :grad_date, style: "display: block" %>
-    <%= form.text_field :grad_date %>
+    <%= f.label :grad_date, style: "display: block" %>
+    <%= f.text_field :grad_date %>
   </div>
 
   <div>
-    <%= form.label :major, style: "display: block" %>
-    <%= form.select :major, options_for_select(Student::VALID_MAJORS), 
+    <%= f.label :major, style: "display: block" %>
+    <%= f.select :major, options_for_select(Student::VALID_MAJORS), 
                   { prompt: "Select a Major" }, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
