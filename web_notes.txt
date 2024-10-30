@@ -1,0 +1,4 @@
+presence: ensures field not nil 
+uniqueness: ensures field is unique in db
+fixtures: predefined sets of data loaded into test database
+
